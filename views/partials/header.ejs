@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="/stylesheets/main.css">
+    <script defer src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <script defer src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+</head>
+
+<body>
+    <nav class="navbar navbar-light bg-light navbar-expand-lg" style="margin-bottom: 20px;">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <a href="/" class="navbar-brand">YelpCamp</a>
+
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="/campgrounds">CampGrounds <span class="sr-only">(current)</span></a>
+                </li>
+            </ul>
+            <div class="btn-group">
+                <% if (currentUser) { %>
+                    <p class="profile-text">Profile: <%= currentUser.username %> </p>
+                <% } %>
+                <div data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="cursor: pointer;">
+                    <i class="material-icons" style="font-size: 35px;">
+                        account_circle
+                    </i>
+                </div>
+                <div class="dropdown-menu dropdown-menu-right">
+                    <% if (!currentUser) { %>
+                        <a class="dropdown-item" type="button" href="/login">Login</a>
+                        <a class="dropdown-item" type="button" href="/register">Sign up</a>
+                    <% }else{ %>
+                        <a class="dropdown-item" type="button" href="/logout">Logout</a>
+                    <% } %>
+                </div>
+            </div>
+        </div>
+        
+    </nav>
+    <div class="container">
+        <% if(success && success.length > 0) { %>
+            <div class="alert alert-success alert-dismissible" role="alert">
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+              <%= success %>
+            </div>
+          <% } %>
+  
+          <% if(error && error.length > 0) { %>
+            <div class="alert alert-danger alert-dismissible" role="alert">
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+              <%= error %>
+            </div>
+          <% } %>

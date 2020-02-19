@@ -1,0 +1,41 @@
+<%- include("../partials/header") %>
+
+
+    <header class="jumbotron">
+        <div class="container">
+            <h1 class="display-4"><i class="fa fa-free-code-camp" aria-hidden="true"></i>
+                Camp page</h1>
+            <p class="lead">Welcome to my first nodejs app from web developer Bootcamp</p>
+            <a class="btn btn-primary btn-lg" href="/campgrounds/new">Add new campground</a>
+
+        </div>
+    </header>
+    <div class="row">
+        <% if (campgrounds.length > 0) { %>
+            <% campgrounds.forEach(element => { %>
+                <div class="col-md-4">
+                    <div class="card mb-3">
+                        <img class="card-img-top img-thumbnail" src="<%= element.image %> " alt="">
+                        <div class="card-body">
+                            <div class="card-title">
+                                <h4 style="text-align: center;"><%= element.name %></h4>
+                            </div>
+                            <p class="card-text" style="text-align: center;">$<%= element.price %>/night </p>
+                        </div>
+                        <a href="/campgrounds/<%= element._id %> " class="btn btn-primary stretched-link">More info.</a>
+                    </div>
+                </div>
+                
+            <% }) %>
+        <% } else { %>
+            <div class="alert alert-info" role="alert" style="width: 100%;">
+               Don´t exist any campground, create one.
+            </div>
+        <% } %> 
+        
+    </div>
+    
+    
+
+    <%- include("../partials/footer") %>
+</div>

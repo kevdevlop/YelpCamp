@@ -1,0 +1,24 @@
+.thumbnail .img-fluid {
+    height: 400px !important;
+}
+
+.thumbnail p {
+    margin-top: 20px;
+}
+
+.comment .time {
+    float: right;
+}
+
+.profile-text {
+    margin-top: 5px;
+    margin-right: 5px;
+}
+
+.btn-edit-campground{
+    float: inline-end;
+}
+
+.form-delete{
+    display: inline;
+}
