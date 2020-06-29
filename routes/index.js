@@ -19,14 +19,16 @@ router.post('/register', function (req, res) {
     User.register(newUser, req.body.password, function (err, user) {
 
         if (err) {
-            res.flash('error', err)
+            req.flash('error', err)
             return res.render('register', {error: err.message})
         }
 
-        passport.authenticate('local')(req, res, function () {
-            res.flash('success', "Bienvenido " + res.user.username)
-            res.redirect("/campgrounds")
-        })
+        passport.authenticate('local', {
+            successRedirect: "/campgrounds",
+            failureRedirect: "/login",
+            failureFlash: true,
+            successFlash: 'Bienvenido!'
+        }), function(req, res) {}
     })
 })
 

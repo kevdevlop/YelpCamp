@@ -65,6 +65,7 @@ router.get('/:id/edit', middleware.isCampOwner, function(req, res){
     var id = req.params.id
     Campground.findById(id, function(err, campFounded){
         if(!err){
+            
             res.render('./campgrounds/edit', {campFounded})
         }
     })
